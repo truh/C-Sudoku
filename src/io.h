@@ -11,6 +11,9 @@
 
 #include "sudoku.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /*! \brief Liesst ein Sudoku aus dem gegebenen Stream.
  *
  * \param stream Stream aus dem gelesen werden soll

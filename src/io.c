@@ -27,7 +27,6 @@ void read_sudoku(FILE * stream, Sudoku * spiel)
         *((*spiel).field + i) = buffer;
         ++i;
     }
-
 }
 
 /*! \brief Schreibt ein Sudoku in den gegebenen Stream
