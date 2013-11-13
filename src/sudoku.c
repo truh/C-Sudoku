@@ -73,8 +73,8 @@ bool solve(Sudoku * spiel)
 		}
 	}
 	//Debug Code---------------------------------------------------
-				    	printf("Debugcode------------------------X_SUDOKU\n");
-				    	printf("GESCHEITERT\n");
+				    	printf("Debugcode------------------------??_SUDOKU\n");
+				    	printf("Kompletter FAIL\n");
 				    	int a,b;
 				        for(a=0; a<9; ++a)
 				        {
