@@ -41,10 +41,10 @@ bool solve(Sudoku * spiel)
 	return FALSE;
 }
 
-int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
+int isAvailable(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, int num, bool isX)
 {
     int i, j;
-    for(i=0; i<9; ++i)
+    for(i=0; i<SUDOKU_SIZE; ++i)
         if( (sudoku[row][i] == num) || ( sudoku[i][col] == num )  )//checking in row and col
             return 0;
 
@@ -82,36 +82,36 @@ int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
  * Quelle: http://codereview.stackexchange.com/questions/13677/c-code-to-solve-sudoku
  */
 
-int fillsudoku(int sudoku[][9], int row, int col, bool isX)
+int fillsudoku(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, bool isX)
 {
     int i;
-    if( row<9 && col<9 )
+    if( row<SUDOKU_SIZE && col<SUDOKU_SIZE )
     {
         if( sudoku[row][col] != 0 )//pre filled
         {
-            if( (col+1)<9 )
+            if( (col+1)<SUDOKU_SIZE )
                 return fillsudoku(sudoku, row, col+1, isX);
-            else if( (row+1)<9 )
+            else if( (row+1)<SUDOKU_SIZE )
                 return fillsudoku(sudoku, row+1, 0, isX);
             else
                 return 1;
         }
         else
         {
-            for(i=0; i<9; ++i)
+            for(i=0; i<SUDOKU_SIZE; ++i)
             {
                 if( isAvailable(sudoku, row, col, i+1, isX) )
                 {
                     sudoku[row][col] = i+1;
 
-                    if( (col+1)<9 )
+                    if( (col+1)<SUDOKU_SIZE )
                     {
                     if( fillsudoku(sudoku, row, col +1, isX) )
                         return 1;
                         else
                             sudoku[row][col] = 0;
                     }
-                    else if( (row+1)<9 )
+                    else if( (row+1)<SUDOKU_SIZE )
                     {
                         if( fillsudoku(sudoku, row+1, 0, isX) )
                             return 1;
