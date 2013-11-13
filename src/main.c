@@ -48,6 +48,8 @@ int main(int argc, char** argv)
         }
     }
 
+    write_sudoku(stream, spiel);
+
     fclose(stream);
     free(spiel);
     return EXIT_SUCCESS;

@@ -26,10 +26,10 @@ void read_sudoku(FILE * stream, Sudoku * spiel)
         }
         if(buffer > SUDOKU_SIZE || buffer <= 0) 
         {
-            printf("Feld nummer: %d enthaelt ungueltigen Wert: %d\n", i, buffer);
+            printf("Feld nummer: %zu enthaelt ungueltigen Wert: %d\n", i, buffer);
             buffer = 0;
         }
-        *((*spiel).field + i) = buffer;
+        **((*spiel).field + i) = buffer;
         ++i;
     }
     if(i < SUDOKU_SIZE * SUDOKU_SIZE)
@@ -51,7 +51,7 @@ void write_sudoku(FILE * stream, Sudoku * spiel)
     {
         for(j = 0; j < SUDOKU_SIZE; ++j)
         {
-            fprintf(stream, "%d ", *((*spiel).field + i * SUDOKU_SIZE + j);
+            fprintf(stream, "%d ", **((*spiel).field + i * SUDOKU_SIZE + j));
         }
         fprintf(stream, "\n");
     }

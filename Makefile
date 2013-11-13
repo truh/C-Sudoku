@@ -4,7 +4,7 @@ all: compile test
 
 compile:
 	cd src;\
-	$(CC) -lm -o ../csudoku.out main.c
+	$(CC) -lm -v -o ../csudoku.out main.c io.c sudoku.c
 
 test: compile
 	./csudoku.out < res/sudoku_01.txt # sudoku ueber stdio eingaeben
