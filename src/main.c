@@ -42,6 +42,8 @@ int main(int argc, char** argv)
 
     //raetsel aus stream einlesen
     read_sudoku(stream, spiel);
+    write_sudoku(stdout, spiel);
+    printf("\n");
 
     //raetsel loesen
     result = solve(spiel);

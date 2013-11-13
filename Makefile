@@ -8,9 +8,9 @@ compile:
 
 test: compile
 	./csudoku.out < res/sudoku_01.txt # sudoku ueber stdio eingaeben
-	./csudoku.out f res/sudoku_02.txt # sudoku ueber den f (file) parameter angeben
-	./csudoku.out f res/sudoku_03.txt
-	./csudoku.out xf res/xsudoku.txt  # xsudoku
+	./csudoku.out < res/sudoku_02.txt # sudoku ueber den f (file) parameter angeben
+	./csudoku.out < res/sudoku_03.txt
+	./csudoku.out x < res/xsudoku.txt  # xsudoku
 
 clean:
 	rm csudoku.out
@@ -20,6 +20,6 @@ clean:
 doc:
 	rst2pdf -o Dokument.pdf README.rst
 
-dist:
+dist: doc compile
 	git log --stat > repo.log
 	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf repo.log src/*
