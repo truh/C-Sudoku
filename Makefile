@@ -1,31 +1,22 @@
-CC      :=gcc
+CC=gcc
+WD=$(pwd)
 
-WARNINGS:= -Wall -Wextra -pedantic -Wshadow -Wpointer-arith -Wcast-align \
-            -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations \
-            -Wredundant-decls -Wnested-externs -Winline -Wno-long-long \
-            -Wuninitialized -Wconversion -Wstrict-prototypes
+all: compile test
 
-CFLAGS  := -g -std=c99 $(WARNINGS)
+compile:
+	cd src;\
+	$(CC) -lm -o ../csudoku.out main.c
 
-SRC     := src/*
-
-EXECUTABLE:= ./csudoku
-
-DISTRIBUTE:= Makefile README.rst Dokument.pdf src
-
-all: dist
-
-build:
-    $(CC) $(CFLAGS) -o $(EXECUTABLE) $(SRC)
+test: compile
+	./csudoku.out
 
 clean:
-    rm $(EXECUTABLE)
-    rm Dokument.pdf
-
-rebuild: clean build
+	rm csudoku.out
+	rm Dokument.pdf
+	rm csudoku-mhaidn-jklepp.zip
 
 doc:
-    rst2pdf -o Dokument.pdf README.pdf
+	rst2pdf -o Dokument.pdf README.rst
 
-dist: doc
-
+dist:
+	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf src/*

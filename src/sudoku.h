@@ -32,7 +32,7 @@ enum SUDOKU_TYPE
 typedef struct 
 {
     int field[SUDOKU_SIZE][SUDOKU_SIZE];
-    SUDOKU_TYPE type;
+    enum SUDOKU_TYPE type;
 } Sudoku;
 
 /*! \brief Loest das gegebene Raetsel
