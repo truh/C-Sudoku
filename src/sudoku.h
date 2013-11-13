@@ -10,4 +10,32 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
+#define SUDOKU_SIZE 9
+#define SUDOKU_PATTERN "%d %d %d %d %d %d %d %d %d"
+
+/*! \brief Um zu unterscheiden um was fuer einen Typ es sich bei einen Sudoku 
+ *         handelt
+ */
+enum SUDOKU_TYPE 
+{
+    NORMAL_SUDOKU,
+    X_SUDOKU
+};
+
+/*! \brief Struct welches das Sudokufeld sowie den Typ des Sudokus enthaelt
+ */
+typedef struct 
+{
+    int[SUDOKU_SIZE][SUDOKU_SIZE] field;
+    SUDOKU_TYPE;
+} Sudoku;
+
+/*! \brief Loest das gegebene Raetsel
+ *
+ * \param spiel Reaetsel das geloest werden soll
+ *
+ * \return geloestes Raetsel
+ */
+Sudoku solve(const Sudoku spiel);
+
 #endif
