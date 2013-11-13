@@ -7,7 +7,10 @@ compile:
 	$(CC) -lm -o ../csudoku.out main.c
 
 test: compile
-	./csudoku.out
+	./csudoku.out < sudoku_01.txt # sudoku ueber stdio eingaeben
+	./csudoku.out f sudoku_02.txt # sudoku ueber den f (file) parameter angeben
+	./csudoku.out f sudoku_03.txt
+	./csudoku.out xf xsudoku.txt  # xsudoku
 
 clean:
 	rm csudoku.out
