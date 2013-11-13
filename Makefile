@@ -1,5 +1,4 @@
 CC=gcc
-WD=$(pwd)
 
 all: compile test
 
