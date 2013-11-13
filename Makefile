@@ -1,16 +1,16 @@
-CC=gcc
+CC=clang
 
 all: compile test
 
 compile:
 	cd src;\
-	$(CC) -lm -o ../csudoku.out main.c
+	$(CC) -lm -v -o ../csudoku.out main.c io.c sudoku.c
 
 test: compile
-	./csudoku.out < sudoku_01.txt # sudoku ueber stdio eingaeben
-	./csudoku.out f sudoku_02.txt # sudoku ueber den f (file) parameter angeben
-	./csudoku.out f sudoku_03.txt
-	./csudoku.out xf xsudoku.txt  # xsudoku
+	./csudoku.out < res/sudoku_01.txt # sudoku ueber stdio eingaeben
+	./csudoku.out f res/sudoku_02.txt # sudoku ueber den f (file) parameter angeben
+	./csudoku.out f res/sudoku_03.txt
+	./csudoku.out xf res/xsudoku.txt  # xsudoku
 
 clean:
 	rm csudoku.out
@@ -21,4 +21,5 @@ doc:
 	rst2pdf -o Dokument.pdf README.rst
 
 dist:
-	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf src/*
+	git log --stat > repo.log
+	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf repo.log src/*

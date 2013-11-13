@@ -19,32 +19,26 @@ bool solve(Sudoku * spiel)
 {
 	int *sudoku= (*spiel).field;
 	if ((*spiel).type == NORMAL_SUDOKU) {
-		if( fillsudoku(sudoku, 0, 0, false) )
+		if( fillsudoku(sudoku, 0, 0) )
 		{
-			return 1;
-		}
-		else
-		{
-			printf("\n\nNO SOLUTION\n\n");
-			return 0;
-		}
-	}
 
-	if ((*spiel).type == X_SUDOKU)
-	{
-		if( fillsudoku(sudoku, 0, 0, true) )
-		{
-			return 1;
+			for(i=0; i<9; ++i)
+			{
+				for(j=0; j<9; ++j)
+					printf("%d ", sudoku[i][j]);
+				printf("\n");
+			}
 		}
 		else
 		{
 			printf("\n\nNO SOLUTION\n\n");
-			return 0;
 		}
+	} else {
+		printf("X-Sudoku");
 	}
 }
 
-int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
+int isAvailable(int sudoku[][9], int row, int col, int num)
 {
     int i, j;
     for(i=0; i<9; ++i)
@@ -64,19 +58,6 @@ int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
         }
     }
 
-    //checking the x
-    if (isX == true)
-    {
-		int x,y;
-		for (x= 0; x < SUDOKU_SIZE; x++)
-		{
-			for (y= 0; y < SUDOKU_SIZE; y++)
-			{
-				if ((x == y) && (sudoku[x][y] == num) return 0;
-				if ((x+y == 8) && (sudoku[x][y] == num)) return 0;
-			}
-		}
-    }
     return 1;
 }
 
@@ -84,7 +65,7 @@ int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
  * Quelle: http://codereview.stackexchange.com/questions/13677/c-code-to-solve-sudoku
  */
 
-int fillsudoku(int sudoku[][9], int row, int col, bool isX)
+int fillsudoku(int sudoku[][9], int row, int col)
 {
     int i;
     if( row<9 && col<9 )
