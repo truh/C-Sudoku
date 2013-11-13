@@ -33,19 +33,10 @@ int main(int argc, char** argv)
         {
             type = X_SUDOKU;
         }
-        if(strstr(argv[0], "f"))
-        {
-            if(argc < 2) {
-                printf("Kein file angegeben.\n");
-            } else
-            {
-                stream = fopen(argv[1], "r");
-            }
-        }
         if(strstr(argv[0], "h"))
         {
             printf("Verwendung: \n");
-            printf("csudoku [x][f file]\n");
+            printf("csudoku [x] < file\n");
         }
     }
 
@@ -54,6 +45,7 @@ int main(int argc, char** argv)
 
     //raetsel loesen
     result = solve(spiel);
+
     //raetsel ausgeben
     write_sudoku(stdout, spiel);
 
