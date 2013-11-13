@@ -42,7 +42,7 @@ typedef struct
  * \return FALSE wenn keine loesung gefunden werden konnte
  */
 bool solve(Sudoku * spiel);
-int fillsudoku(int sudoku[][9], int row, int col)
+int fillsudoku(int sudoku[][9], int row, int col);
 int isAvailable(int field[][9], int row, int col, int num);
 
 #endif

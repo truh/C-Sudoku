@@ -15,10 +15,10 @@
 
 int main(int argc, char** argv)
 {
-    FILE * stream = stdio; //Default stream
+    FILE * stream = stdin; //Default stream
     enum SUDOKU_TYPE type = NORMAL_SUDOKU;
 
-    Sudoku *spiel = null;
+    Sudoku *spiel = NULL;
     spiel = malloc(sizeof(Sudoku));
     if(!spiel) 
     {
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
         }
         if(strstr(argv[0], "f"))
         {
-            if(argv < 2) {
+            if(argc < 2) {
                 printf("Kein file angegeben.\n");
             } else
             {
@@ -47,7 +47,7 @@ int main(int argc, char** argv)
             printf("csudoku [x][f file]\n");
         }
     }
-    
+
     fclose(stream);
     free(spiel);
     return EXIT_SUCCESS;
