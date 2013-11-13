@@ -15,14 +15,40 @@
 
 int main(int argc, char** argv)
 {
-	int i, j;
-	int sudoku[9][9]={{3, 0, 6, 5, 0, 8, 4, 0, 0},
-					  {5, 2, 0, 0, 0, 0, 0, 0, 0},
-					  {0, 8, 7, 0, 0, 0, 0, 3, 1},
-					  {0, 0, 3, 0, 1, 0, 0, 8, 0},
-					  {9, 0, 0, 8, 6, 3, 0, 0, 5},
-					  {0, 5, 0, 0, 9, 0, 6, 0, 0},
-					  {1, 3, 0, 0, 0, 0, 2, 5, 0},
-					  {0, 0, 0, 0, 0, 0, 0, 7, 4},
-					  {0, 0, 5, 2, 0, 6, 3, 0, 0}};
+    FILE * stream = stdio; //Default stream
+    enum SUDOKU_TYPE type = NORMAL_SUDOKU;
+
+    Sudoku *spiel = null;
+    spiel = malloc(sizeof(Sudoku));
+    if(!spiel) 
+    {
+        printf("Speicher konnte nicht angefordert werden.\n");
+        return EXIT_FAILURE;
+    }
+
+    if(argc > 0)
+    {
+        if(strstr(argv[0], "x"))
+        {
+            type = X_SUDOKU;
+        }
+        if(strstr(argv[0], "f"))
+        {
+            if(argv < 2) {
+                printf("Kein file angegeben.\n");
+            } else
+            {
+                stream = fopen(argv[1], "r");
+            }
+        }
+        if(strstr(argv[0], "h"))
+        {
+            printf("Verwendung: \n");
+            printf("csudoku [x][f file]\n");
+        }
+    }
+    
+    fclose(stream);
+    free(spiel);
+    return EXIT_SUCCESS;
 }
