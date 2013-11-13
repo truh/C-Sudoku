@@ -46,7 +46,7 @@ void read_sudoku(FILE * stream, Sudoku * spiel)
  */
 void write_sudoku(FILE * stream, Sudoku * spiel)
 {
-    size_t i, j;
+    /*size_t i, j;
 
     for(i = 0; i < SUDOKU_SIZE; ++i)
     {
@@ -55,5 +55,12 @@ void write_sudoku(FILE * stream, Sudoku * spiel)
             fprintf(stream, "%d ", **((*spiel).field + i * SUDOKU_SIZE + j));
         }
         fprintf(stream, "\n");
-    }
+    }*/
+    int a,b;
+	for(a=0; a<9; ++a)
+	{
+		for(b=0; b<9; ++b)
+			fprintf(stream, "%d ", (*spiel).field[a][b]);
+		fprintf(stream, "\n");
+	}
 }
