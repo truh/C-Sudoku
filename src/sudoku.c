@@ -17,14 +17,25 @@
  */
 bool solve(Sudoku * spiel)
 {
-    int i, j;
+	int *sudoku= (*spiel).field;
+	if ((*spiel).type == NORMAL_SUDOKU) {
+		if( fillsudoku(sudoku, 0, 0) )
+		{
 
-    if ((*spiel).type == NORMAL_SUDOKU) {
-        return fillsudoku((*spiel).field, 0, 0);
-    } else {
-        printf("X-Sudoku");
-    }
-    return FALSE;
+			for(i=0; i<9; ++i)
+			{
+				for(j=0; j<9; ++j)
+					printf("%d ", sudoku[i][j]);
+				printf("\n");
+			}
+		}
+		else
+		{
+			printf("\n\nNO SOLUTION\n\n");
+		}
+	} else {
+		printf("X-Sudoku");
+	}
 }
 
 int isAvailable(int sudoku[][9], int row, int col, int num)
