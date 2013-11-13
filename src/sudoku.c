@@ -39,7 +39,7 @@ bool solve(Sudoku * spiel)
 		}
 	}
 
-	if ((*spiel).type == NORMAL_SUDOKU) {
+	if ((*spiel).type == X_SUDOKU) {
 		if( fillsudoku((*spiel).field, 0, 0, TRUE) )
 		{
 		  	//Debug Code---------------------------------------------------
