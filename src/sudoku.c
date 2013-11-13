@@ -17,28 +17,28 @@
  */
 bool solve(Sudoku * spiel)
 {
-	int *sudoku= (*spiel).field;
 	if ((*spiel).type == NORMAL_SUDOKU) {
-		if( fillsudoku(sudoku, 0, 0, false) )
+		if( fillsudoku((*spiel).field, 0, 0, FALSE) )
 		{
-			return 1;
+			return TRUE;
 		}
 		else
 		{
-			return 0;
+			return FALSE;
 		}
 	}
 
 	if ((*spiel).type == NORMAL_SUDOKU) {
-		if( fillsudoku(sudoku, 0, 0, true) )
+		if( fillsudoku((*spiel).field, 0, 0, TRUE) )
 		{
-			return 1;
+			return TRUE;
 		}
 		else
 		{
-			return 0;
+			return FALSE;
 		}
 	}
+	return FALSE;
 }
 
 int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
@@ -62,14 +62,14 @@ int isAvailable(int sudoku[][9], int row, int col, int num, bool isX)
     }
 
     //checking the x
-     if (isX == true)
+     if (isX)
      {
     	 int x,y;
     	 for (x= 0; x < SUDOKU_SIZE; x++)
     	 {
     		 for (y= 0; y < SUDOKU_SIZE; y++)
     		 {
-    			 if ((x == y) && (sudoku[x][y] == num) return 0;
+    			 if ((x == y) && (sudoku[x][y] == num)) return 0;
     			 if ((x+y == 8) && (sudoku[x][y] == num)) return 0;
     		 }
     	 }
