@@ -21,4 +21,5 @@ doc:
 	rst2pdf -o Dokument.pdf README.rst
 
 dist:
-	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf src/*
+	git log --stat > repo.log
+	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf repo.log src/*
