@@ -1,7 +1,7 @@
 /*
   Name of file  : io.h
   Author        : Martin Haidn <mhaidn@student.tgm.ac.at>
-                  Jakob Klepp <jklepp@student.tgm.ac.at>
+                  Jakob Klepp  <jklepp@student.tgm.ac.at>
   Version       : 20131112.1
   Description   : Stellt Funktionsprototypen zum einlesen von CSV zur
                   verfuegung.
@@ -15,11 +15,9 @@
  *
  * \param stream Stream aus dem gelesen werden soll
  * 
- * \param type Typ des Raetsel
- *
- * \return Eingelesenes Raetsel
+ * \param spiel Referenz in die der Stream gelesen werden soll
  */
-Sudoku read_sudoku(FILE * stream, const SUDOKU_TYPE type);
+void read_sudoku(FILE * stream, Sudoku * spiel);
 
 /*! \brief Schreibt ein Sudoku in den gegebenen Stream
  *
@@ -27,5 +25,5 @@ Sudoku read_sudoku(FILE * stream, const SUDOKU_TYPE type);
  *
  * \param spiel Sudoku die geschrieben werden soll
  */
-void write_sudoku(FILE * stream, const Sudoku spiel);
+void write_sudoku(FILE * stream, Sudoku * spiel);
 #endif
