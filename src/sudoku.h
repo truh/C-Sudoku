@@ -21,7 +21,7 @@ typedef int bool;
 /*! \brief Um zu unterscheiden um was fuer einen Typ es sich bei einen Sudoku 
  *         handelt
  */
-typedef int SUDOKU_TYPE 
+typedef int SUDOKU_TYPE; 
 #define NORMAL_SUDOKU 0
 #define X_SUDOKU 1
 

@@ -17,7 +17,7 @@
 int main(int argc, char** argv)
 {
     FILE * stream = stdin; //Default stream
-    enum SUDOKU_TYPE type = NORMAL_SUDOKU;
+    SUDOKU_TYPE type = NORMAL_SUDOKU;
     bool result;
 
     Sudoku *spiel = NULL;
@@ -42,7 +42,6 @@ int main(int argc, char** argv)
     }
 
     spiel->type = type;
-
     //raetsel aus stream einlesen
     read_sudoku(stream, spiel);
     write_sudoku(stdout, spiel);

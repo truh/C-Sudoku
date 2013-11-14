@@ -20,8 +20,9 @@ void read_sudoku(FILE * stream, Sudoku * spiel)
 
     while((fscanf(stream, "%d", &buffer)) != EOF )
     {
-        if(i > SUDOKU_SIZE * SUDOKU_SIZE)
+        if(i >= SUDOKU_SIZE * SUDOKU_SIZE)
         {
+            printf("Zu viele Werte!\n");
             break;
         }
         if(buffer > SUDOKU_SIZE || buffer < 0) 

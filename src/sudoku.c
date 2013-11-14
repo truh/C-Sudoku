@@ -18,7 +18,7 @@
  */
 bool solve(Sudoku * spiel)
 {
-	if ((*spiel).type == NORMAL_SUDOKU) {
+	if (spiel->type == NORMAL_SUDOKU) {
 		if( fillsudoku(spiel, 0, 0) )
 		{
 #ifdef DEBUG//Debug Code---------------------------------------------------
@@ -40,7 +40,7 @@ bool solve(Sudoku * spiel)
 		}
 	}
 
-	if ((*spiel).type == X_SUDOKU) {
+	if (spiel->type == X_SUDOKU) {
 		if( fillsudoku(spiel, 0, 0) )
 		{
 #ifdef DEBUG//Debug Code---------------------------------------------------
