@@ -11,7 +11,8 @@ test: compile
 	./csudoku.out < res/sudoku_02.txt # sudoku ueber den f (file) parameter angeben
 	./csudoku.out < res/sudoku_03.txt # Unschaffbares Sudoku
 	./csudoku.out < res/sudoku_04.txt # Sudoku aus dem Beispielcode
-	./csudoku.out x < res/xsudoku.txt # X-Sudoku
+	./csudoku.out x < res/xsudoku_01.txt # X-Sudoku
+	./csudoku.out x < res/xsudoku_02.txt # X-Sudoku
 
 clean:
 	rm csudoku.out
