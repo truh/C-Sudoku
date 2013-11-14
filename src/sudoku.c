@@ -18,65 +18,65 @@
  */
 bool solve(Sudoku * spiel)
 {
-	if (spiel->type == NORMAL_SUDOKU) {
-		if( fillsudoku(spiel, 0, 0) )
-		{
+    if (spiel->type == NORMAL_SUDOKU) {
+        if( fillsudoku(spiel, 0, 0) )
+        {
 #ifdef DEBUG//Debug Code---------------------------------------------------
-	    	printf("Debugcode------------------------NORMAL_SUDOKU\n");
-	    	int a,b;
-	        for(a=0; a<9; ++a)
-	        {
-	            for(b=0; b<9; ++b)
-	                printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
-	            printf("\n");
-	        }
-	        printf("----------EODBG\n");
+            printf("Debugcode------------------------NORMAL_SUDOKU\n");
+            int a,b;
+            for(a=0; a<9; ++a)
+            {
+                for(b=0; b<9; ++b)
+                    printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
+                printf("\n");
+            }
+            printf("----------EODBG\n");
 #endif
-			return TRUE;
-		}
-		else
-		{
-			return FALSE;
-		}
-	}
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 
-	if (spiel->type == X_SUDOKU) {
-		if( fillsudoku(spiel, 0, 0) )
-		{
+    if (spiel->type == X_SUDOKU) {
+        if( fillsudoku(spiel, 0, 0) )
+        {
 #ifdef DEBUG//Debug Code---------------------------------------------------
-		    printf("Debugcode------------------------X_SUDOKU\n");
-		    int a,b;
-		    for(a=0; a<9; ++a)
-		    {
-		        for(b=0; b<9; ++b)
-		            printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
-		            printf("\n");
-		    }
-		    printf("----------EODBG\n");
+            printf("Debugcode------------------------X_SUDOKU\n");
+            int a,b;
+            for(a=0; a<9; ++a)
+            {
+                for(b=0; b<9; ++b)
+                    printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
+                    printf("\n");
+            }
+            printf("----------EODBG\n");
 #endif
-			return TRUE;
-		}
-		else
-		{
+            return TRUE;
+        }
+        else
+        {
 #ifdef DEBUG//Debug Code---------------------------------------------------
-	    	printf("Debugcode------------------------X_SUDOKU\n");
-	    	printf("GESCHEITERT\n");
-	    	int a,b;
-	        for(a=0; a<9; ++a)
-	        {
-	            for(b=0; b<9; ++b)
-	                printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
-	            printf("\n");
-	        }
-	        printf("----------EODBG\n");
+            printf("Debugcode------------------------X_SUDOKU\n");
+            printf("GESCHEITERT\n");
+            int a,b;
+            for(a=0; a<9; ++a)
+            {
+                for(b=0; b<9; ++b)
+                    printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
+                printf("\n");
+            }
+            printf("----------EODBG\n");
 #endif
-			return FALSE;
-		}
-	}
+            return FALSE;
+        }
+    }
 #ifdef DEBUG//Debug Code---------------------------------------------------
-	printf("Debugcode------------------------SUDOKU?\n");
-	printf("GESCHEITERT\n");
-	int a,b;
+    printf("Debugcode------------------------SUDOKU?\n");
+    printf("GESCHEITERT\n");
+    int a,b;
     for(a=0; a<9; ++a)
     {
         for(b=0; b<9; ++b)
@@ -86,7 +86,7 @@ bool solve(Sudoku * spiel)
     printf("----------EODBG\n");
 #endif
 
-	return FALSE;
+    return FALSE;
 }
 
 int isAvailable(Sudoku * spiel, int row, int col, int num)
@@ -110,18 +110,19 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
     }
 
     //checking the x
-     if (spiel->type==X_SUDOKU)
-     {
-    	 int x,y;
-    	 for (x= 0; x < SUDOKU_SIZE; x++)
-    	 {
-    		 for (y= 0; y < SUDOKU_SIZE; y++)
-    		 {
-    			 if ((x == y) && (*(spiel->field + SUDOKU_SIZE * x + y) == num)) return 0;
-    			 if ((x+y == 8) && (*(spiel->field + SUDOKU_SIZE * x + y) == num)) return 0;
-    		 }
-    	 }
-     }
+    if (spiel->type==X_SUDOKU)
+    {
+        int i;
+        for(i=0; i < SUDOKU_SIZE; ++i)
+        {
+            if (*(spiel->field + SUDOKU_SIZE * i + i) == num) 
+                {   return 0;
+                } 
+            if (*(spiel->field + SUDOKU_SIZE * i + SUDOKU_SIZE - (i+1)) == num)
+                {   return 0;
+                }
+        }
+    }
 
     return 1;
 }
