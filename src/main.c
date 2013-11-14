@@ -53,6 +53,8 @@ int main(int argc, char** argv)
     //raetsel loesen
     result = solve(spiel);
 
+    printf("Geschaft? %s\n", result? "true":"false");
+
     //raetsel ausgeben
     write_sudoku(stdout, spiel);
 
