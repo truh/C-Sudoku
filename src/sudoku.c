@@ -116,11 +116,11 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
         for(i=0; i < SUDOKU_SIZE; ++i)
         {
             if (*(spiel->field + SUDOKU_SIZE * i + i) == num) 
-                {   return 0;
-                } 
+            {   return 0;
+            }
             if (*(spiel->field + SUDOKU_SIZE * i + SUDOKU_SIZE - (i+1)) == num)
-                {   return 0;
-                }
+            {   return 0;
+            }
         }
     }
 
