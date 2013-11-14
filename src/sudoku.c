@@ -27,7 +27,7 @@ bool solve(Sudoku * spiel)
 	        for(a=0; a<9; ++a)
 	        {
 	            for(b=0; b<9; ++b)
-	                printf("%d ", spiel->field[a][b]);
+	                printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
 	            printf("\n");
 	        }
 	        printf("----------EODBG\n");
@@ -49,7 +49,7 @@ bool solve(Sudoku * spiel)
 		    for(a=0; a<9; ++a)
 		    {
 		        for(b=0; b<9; ++b)
-		            printf("%d ", spiel->field[a][b]);
+		            printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
 		            printf("\n");
 		    }
 		    printf("----------EODBG\n");
@@ -65,7 +65,7 @@ bool solve(Sudoku * spiel)
 	        for(a=0; a<9; ++a)
 	        {
 	            for(b=0; b<9; ++b)
-	                printf("%d ", spiel->field[a][b]);
+	                printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
 	            printf("\n");
 	        }
 	        printf("----------EODBG\n");
@@ -80,7 +80,7 @@ bool solve(Sudoku * spiel)
     for(a=0; a<9; ++a)
     {
         for(b=0; b<9; ++b)
-            printf("%d ", spiel->field[a][b]);
+            printf("%d ", *(spiel->field + SUDOKU_SIZE * a + b));
         printf("\n");
     }
     printf("----------EODBG\n");
@@ -92,7 +92,7 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
 {
     int i, j;
     for(i=0; i<SUDOKU_SIZE; ++i)
-        if( (spiel->field[row][i] == num) || ( spiel->field[i][col] == num )  )//checking in row and col
+        if( (*(spiel->field + SUDOKU_SIZE * row + i) == num) || ( *(spiel->field + SUDOKU_SIZE * i + col) == num )  )//checking in row and col
             return 0;
 
     //checking in the grid
@@ -103,7 +103,7 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
     {
         for(j=colStart; j<(colStart+3); ++j)
         {
-            if( spiel->field[i][j] == num )
+            if( *(spiel->field + SUDOKU_SIZE * i + j) == num )
                 return 0;
         }
     }
@@ -116,8 +116,8 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
     	 {
     		 for (y= 0; y < SUDOKU_SIZE; y++)
     		 {
-    			 if ((x == y) && (spiel->field[x][y] == num)) return 0;
-    			 if ((x+y == 8) && (spiel->field[x][y] == num)) return 0;
+    			 if ((x == y) && (*(spiel->field + SUDOKU_SIZE * x + y) == num)) return 0;
+    			 if ((x+y == 8) && (*(spiel->field + SUDOKU_SIZE * x + y) == num)) return 0;
     		 }
     	 }
      }
@@ -134,7 +134,7 @@ int fillsudoku(Sudoku * spiel, int row, int col)
     int i;
     if( row < SUDOKU_SIZE && col < SUDOKU_SIZE )
     {
-        if( spiel->field[row][col] != 0 )//pre filled
+        if( *(spiel->field + SUDOKU_SIZE * row + col) != 0 )//pre filled
         {
             if( (col+1)<SUDOKU_SIZE )
                 return fillsudoku(spiel, row, col+1);
@@ -149,21 +149,21 @@ int fillsudoku(Sudoku * spiel, int row, int col)
             {
                 if( isAvailable(spiel, row, col, i+1) )
                 {
-                    spiel->field[row][col] = i+1;
+                    *(spiel->field + SUDOKU_SIZE * row + col) = i+1;
 
                     if( (col+1) < SUDOKU_SIZE )
                     {
                     if( fillsudoku(spiel, row, col +1) )
                         return 1;
                         else
-                            spiel->field[row][col] = 0;
+                            *(spiel->field + SUDOKU_SIZE * row + col) = 0;
                     }
                     else if( (row+1)<SUDOKU_SIZE )
                     {
                         if( fillsudoku(spiel, row+1, 0) )
                             return 1;
                         else
-                            spiel->field[row][col] = 0;
+                            *(spiel->field + SUDOKU_SIZE * row + col) = 0;
                     }
                     else
                         return 1;

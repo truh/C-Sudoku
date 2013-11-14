@@ -29,7 +29,7 @@ typedef int SUDOKU_TYPE;
  */
 typedef struct 
 {
-    int field[SUDOKU_SIZE][SUDOKU_SIZE];
+    int *field;
     SUDOKU_TYPE type;
 } Sudoku;
 

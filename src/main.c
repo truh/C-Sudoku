@@ -22,6 +22,9 @@ int main(int argc, char** argv)
 
     Sudoku *spiel = NULL;
     spiel = malloc(sizeof(Sudoku));
+
+    spiel->field = malloc(sizeof(int) * SUDOKU_SIZE * SUDOKU_SIZE);
+
     if(!spiel) 
     {
         printf("Speicher konnte nicht angefordert werden.\n");
