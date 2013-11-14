@@ -22,6 +22,6 @@ clean:
 doc:
 	rst2pdf -o Dokument.pdf README.rst
 
-dist: doc compile
+dist: clean doc test
 	git log --stat > repo.log
 	zip csudoku-mhaidn-jklepp Makefile README.rst Dokument.pdf repo.log src/* res/*
