@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define DEBUG
 int main(int argc, char** argv)
 {
     FILE * stream = stdin; //Default stream
@@ -29,11 +30,11 @@ int main(int argc, char** argv)
 
     if(argc > 1)
     {
-        if(strstr(argv[0], "x"))
+        if(strstr(argv[1], "x"))
         {
             type = X_SUDOKU;
         }
-        if(strstr(argv[0], "h"))
+        if(strstr(argv[1], "h"))
         {
             printf("Verwendung: \n");
             printf("csudoku [x] < file\n");
@@ -55,5 +56,15 @@ int main(int argc, char** argv)
 
     fclose(stream);
     free(spiel);
+
+#ifdef DEBUG
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+#endif
+
     return EXIT_SUCCESS;
 }

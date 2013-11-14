@@ -21,18 +21,16 @@ typedef int bool;
 /*! \brief Um zu unterscheiden um was fuer einen Typ es sich bei einen Sudoku 
  *         handelt
  */
-enum SUDOKU_TYPE 
-{
-    NORMAL_SUDOKU,
-    X_SUDOKU
-};
+typedef int SUDOKU_TYPE 
+#define NORMAL_SUDOKU 0
+#define X_SUDOKU 1
 
 /*! \brief Struct welches das Sudokufeld sowie den Typ des Sudokus enthaelt
  */
 typedef struct 
 {
     int field[SUDOKU_SIZE][SUDOKU_SIZE];
-    enum SUDOKU_TYPE type;
+    SUDOKU_TYPE type;
 } Sudoku;
 
 /*! \brief Loest das gegebene Raetsel
@@ -42,7 +40,7 @@ typedef struct
  * \return FALSE wenn keine loesung gefunden werden konnte
  */
 bool solve(Sudoku * spiel);
-int fillsudoku(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, bool isX);
-int isAvailable(int field[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, int num, bool isX);
+int fillsudoku(Sudoku * spiel, int row, int col);
+int isAvailable(Sudoku * spiel, int row, int col, int num);
 
 #endif
