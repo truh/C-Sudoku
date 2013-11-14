@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include "sudoku.h"
-#define DEBUG
 
 /*! \brief Loest das gegebene Raetsel
  *

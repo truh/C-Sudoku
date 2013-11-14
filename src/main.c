@@ -13,7 +13,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEBUG
 int main(int argc, char** argv)
 {
     FILE * stream = stdin; //Default stream
@@ -57,12 +56,12 @@ int main(int argc, char** argv)
 
     //raetsel ausgeben
     write_sudoku(stdout, spiel);
+    printf("\n");
 
     fclose(stream);
     free(spiel);
 
 #ifdef DEBUG
-    printf("\n");
     printf("\n");
     printf("\n");
     printf("\n");
