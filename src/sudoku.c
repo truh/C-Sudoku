@@ -20,6 +20,17 @@ bool solve(Sudoku * spiel)
 	if ((*spiel).type == NORMAL_SUDOKU) {
 		if( fillsudoku((*spiel).field, 0, 0, FALSE) )
 		{
+	    	//Debug Code---------------------------------------------------
+	    	printf("Debugcode------------------------NORMAL_SUDOKU\n");
+	    	int a,b;
+	        for(a=0; a<9; ++a)
+	        {
+	            for(b=0; b<9; ++b)
+	                printf("%d ", (*spiel).field[a][b]);
+	            printf("\n");
+	        }
+	        printf("----------EODBG\n");
+	    	//EODBG
 			return TRUE;
 		}
 		else
@@ -31,13 +42,48 @@ bool solve(Sudoku * spiel)
 	if ((*spiel).type == X_SUDOKU) {
 		if( fillsudoku((*spiel).field, 0, 0, TRUE) )
 		{
+		  	//Debug Code---------------------------------------------------
+			    	printf("Debugcode------------------------X_SUDOKU\n");
+			    	int a,b;
+			        for(a=0; a<9; ++a)
+			        {
+			            for(b=0; b<9; ++b)
+			                printf("%d ", (*spiel).field[a][b]);
+			            printf("\n");
+			        }
+			        printf("----------EODBG\n");
+			    	//EODBG
 			return TRUE;
 		}
 		else
 		{
+		  	//Debug Code---------------------------------------------------
+				    	printf("Debugcode------------------------X_SUDOKU\n");
+				    	printf("GESCHEITERT\n");
+				    	int a,b;
+				        for(a=0; a<9; ++a)
+				        {
+				            for(b=0; b<9; ++b)
+				                printf("%d ", (*spiel).field[a][b]);
+				            printf("\n");
+				        }
+				        printf("----------EODBG\n");
+				    	//EODBG
 			return FALSE;
 		}
 	}
+	//Debug Code---------------------------------------------------
+				    	printf("Debugcode------------------------X_SUDOKU\n");
+				    	printf("GESCHEITERT\n");
+				    	int a,b;
+				        for(a=0; a<9; ++a)
+				        {
+				            for(b=0; b<9; ++b)
+				                printf("%d ", (*spiel).field[a][b]);
+				            printf("\n");
+				        }
+				        printf("----------EODBG\n");
+				    	//EODBG
 	return FALSE;
 }
 
@@ -85,7 +131,7 @@ int isAvailable(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, int num,
 int fillsudoku(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, bool isX)
 {
     int i;
-    if( row<SUDOKU_SIZE && col<SUDOKU_SIZE )
+    if( row < SUDOKU_SIZE && col < SUDOKU_SIZE )
     {
         if( sudoku[row][col] != 0 )//pre filled
         {
@@ -98,13 +144,13 @@ int fillsudoku(int sudoku[SUDOKU_SIZE][SUDOKU_SIZE], int row, int col, bool isX)
         }
         else
         {
-            for(i=0; i<SUDOKU_SIZE; ++i)
+            for(i= 0; i < SUDOKU_SIZE; ++i)
             {
                 if( isAvailable(sudoku, row, col, i+1, isX) )
                 {
                     sudoku[row][col] = i+1;
 
-                    if( (col+1)<SUDOKU_SIZE )
+                    if( (col+1) < SUDOKU_SIZE )
                     {
                     if( fillsudoku(sudoku, row, col +1, isX) )
                         return 1;

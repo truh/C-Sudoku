@@ -10,6 +10,7 @@ test: compile
 	./csudoku.out < res/sudoku_01.txt # sudoku ueber stdio eingaeben
 	./csudoku.out < res/sudoku_02.txt # sudoku ueber den f (file) parameter angeben
 	./csudoku.out < res/sudoku_03.txt
+	./csudoku.out < res/sudoku_04.txt # Sudoku aus dem Beispielcode
 	./csudoku.out x < res/xsudoku.txt  # xsudoku
 
 clean:
