@@ -27,7 +27,7 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
-    if(argc > 0)
+    if(argc > 1)
     {
         if(strstr(argv[0], "x"))
         {
@@ -39,6 +39,8 @@ int main(int argc, char** argv)
             printf("csudoku [x] < file\n");
         }
     }
+
+    spiel->type = type;
 
     //raetsel aus stream einlesen
     read_sudoku(stream, spiel);
