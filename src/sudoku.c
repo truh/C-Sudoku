@@ -113,11 +113,18 @@ int isAvailable(Sudoku * spiel, int row, int col, int num)
     if (spiel->type==X_SUDOKU)
     {
         int i;
+        if(row == col)
+        {
+            for(i=0; i < SUDOKU_SIZE; ++i)
+            {
+                if (*(spiel->field + SUDOKU_SIZE * i + i) == num) 
+                {   return 0;
+                }
+            }
+        }
+        if((row + col) == (SUDOKU_SIZE -1))
         for(i=0; i < SUDOKU_SIZE; ++i)
         {
-            if (*(spiel->field + SUDOKU_SIZE * i + i) == num) 
-            {   return 0;
-            }
             if (*(spiel->field + SUDOKU_SIZE * i + SUDOKU_SIZE - (i+1)) == num)
             {   return 0;
             }
