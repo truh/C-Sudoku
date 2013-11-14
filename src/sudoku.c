@@ -58,6 +58,7 @@ bool solve(Sudoku * spiel)
 		}
 		else
 		{
+<<<<<<< HEAD
 #ifdef DEBUG//Debug Code---------------------------------------------------
 	    	printf("Debugcode------------------------X_SUDOKU\n");
 	    	printf("GESCHEITERT\n");
@@ -85,6 +86,23 @@ bool solve(Sudoku * spiel)
     }
     printf("----------EODBG\n");
 #endif
+=======
+			return FALSE;
+		}
+	}
+	//Debug Code---------------------------------------------------
+				    	printf("Debugcode------------------------??_SUDOKU\n");
+				    	printf("Kompletter FAIL\n");
+				    	int a,b;
+				        for(a=0; a<9; ++a)
+				        {
+				            for(b=0; b<9; ++b)
+				                printf("%d ", (*spiel).field[a][b]);
+				            printf("\n");
+				        }
+				        printf("----------EODBG\n");
+				    	//EODBG
+>>>>>>> dff2bacbefe0cf53594c18c4154b47079cbe3b21
 	return FALSE;
 }
 
